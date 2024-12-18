@@ -1,0 +1,45 @@
+<div class="body">
+    <div class="content-page">
+        <div class="title-nav-page">
+            <p class="title-page">
+                Đánh giá sản phẩm (<%= product.name %>)
+            </p>
+            <ol class="nav-page">
+                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Đánh giá sản phẩm <%= product.name %></li>
+            </ol>
+        </div>
+    </div>
+
+    <div style="margin: 50px 25% 0 25%; border: solid 1px rgb(20, 182, 79); text-align: center; border-radius: 10px;">
+        <form method="POST" action="/danh-gia" enctype="multipart/form-data">
+            <input type="hidden" name="productId" value="<%= product._id %>">
+            <ul class="rating" style="font-size: 40px; justify-content: center;">
+                <input type="hidden" class="rating-star" name="rating" value="3">
+                <li class="rating-item" data-rate="1"></li>
+                <li class="rating-item" data-rate="2"></li>
+                <li class="rating-item active" data-rate="3"></li>
+                <li class="rating-item" data-rate="4"></li>
+                <li class="rating-item" data-rate="5"></li>
+            </ul>
+
+            <div class="form-group">
+                <label for="comment">Nhận xét của bạn</label>
+                <textarea class="form-control" id="comment" name="comment" style="height: 230px;" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="imgRating">Ảnh minh họa (Vui lòng chọn 1 ảnh)</label>
+                <input type="file" class="form-control" id="imgRating" name="imgRating" multiple required>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="preview-images"></div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-click btn-cart" style="margin-bottom: 5px;">Đăng</button>
+        </form>
+    </div>
+</div>

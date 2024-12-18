@@ -1,0 +1,61 @@
+<div class="body">
+    <div class="content-page">
+        <div class="title-nav-page">
+            <p class="title-page">Quản lý đơn hàng</p>
+            <ol class="nav-page">
+                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý đơn hàng</li>
+            </ol>
+        </div>
+    </div>
+    <div style="margin: 0 5%;">
+        <a class="btn btn-back" href="/" style="margin: 25px 13px;">
+            <span class="oi oi-arrow-left"></span> Quay lại cửa hàng
+        </a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Mã đơn hàng</th>
+                    <th scope="col">Người nhận</th>
+                    <th scope="col">Sản phẩm</th>
+                    <th scope="col">SĐT</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Tổng tiền (VNĐ)</th>
+                    <th scope="col">Thời gian đặt hàng</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Cập nhật trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (orders.length > 0) { %>
+                    <% orders.forEach(function(order) { %>
+                    <tr>
+                        <th scope="row"><%= order._id %></th>
+                        <td><%= order.name %></td>
+                        <td>
+                            <% order.products.forEach(function(product) { %>
+                            <div style="display: flex; margin: 5px 0;">
+                                <img src="/<%= product.img %>" alt="" style="width: 40px;">
+                                <div style="margin-left: 5px;"><%= product.name %>: Số lượng <%= product.quantity %></div>
+                            </div>
+                            <% }) %>
+                        </td>
+                        <td><%= order.phone %></td>
+                        <td><%= order.address %></td>
+                        <td><%= order.tong_tien %></td>
+                        <td><%= order.createdAt %></td>
+                        <td><%= order.status %></td>
+                        <td>
+                            <a href="#" class="btn btn-primary">Cập nhật</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                <% } else { %>
+                <tr>
+                    <td colspan="9" class="text-center">Bạn chưa có đơn đặt hàng nào. <a href="/">Quay lại cửa hàng</a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
